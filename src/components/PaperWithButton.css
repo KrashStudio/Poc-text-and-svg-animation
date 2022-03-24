@@ -1,0 +1,15 @@
+.paper-with-button {
+	background-color: #2e3542;
+	border: 1px solid #aaf;
+	border-radius: 5px;
+	width: 250px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.button {
+	z-index: 100000;
+}
