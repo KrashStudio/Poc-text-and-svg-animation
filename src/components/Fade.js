@@ -8,7 +8,7 @@ const defaultPosition = {
 	right: 200,
 };
 
-const Fade = ({ in: inProp, from = "center" }) => {
+const Fade = ({ in: inProp, from = "center", text }) => {
 	const duration = 300;
 
 	const isLeftOrRight = from === "left" || from === "right";
@@ -47,7 +47,7 @@ const Fade = ({ in: inProp, from = "center" }) => {
 						...transitionStyles[state],
 					}}
 				>
-					{`I'm a ${from} fade Transition!`}
+					{text ? text : `I'm a ${from} fade Transition!`}
 				</div>
 			)}
 		</Transition>

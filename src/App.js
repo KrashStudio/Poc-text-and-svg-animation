@@ -20,6 +20,8 @@ const App = () => {
 	const [zoomIsIn, setZoomIsIn] = React.useState(false);
 	const [fullAnimationIsIn, setFullAnimationIsIn] = React.useState(false);
 
+	const [textCustom, setTextCustom] = React.useState(undefined);
+
 	const setAllTransition = (value) => {
 		setFadeIsIn(value);
 		setFadeByLetterIsIn(value);
@@ -49,7 +51,14 @@ const App = () => {
 						<Fade in={fadeIsIn} />
 					</PaperWithButton>
 					<PaperWithButton onClick={() => setFadeLeftIsIn((e) => !e)}>
-						<Fade in={fadeLeftIsIn} from="left" />
+						<>
+							<Fade in={fadeLeftIsIn} from="left" text={textCustom} />
+							<input
+								type="text"
+								value={textCustom}
+								onChange={(e) => setTextCustom(e.target.value)}
+							></input>
+						</>
 					</PaperWithButton>
 					<PaperWithButton onClick={() => setFadeRightIsIn((e) => !e)}>
 						<Fade in={fadeRightIsIn} from="right" />
