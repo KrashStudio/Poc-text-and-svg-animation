@@ -7,6 +7,8 @@ import PaperWithButton from "./components/PaperWithButton";
 import Rotate from "./components/Rotate";
 import Zoom from "./components/Zoom";
 
+// this is a test
+
 const App = () => {
 	const [fadeIsIn, setFadeIsIn] = React.useState(false);
 	const [fadeByLetterIsIn, setFadeByLetterIsIn] = React.useState(false);
