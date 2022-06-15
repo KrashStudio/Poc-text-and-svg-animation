@@ -22,7 +22,7 @@ const FadeByLetter = ({ in: inProp, text = "", smooth = true }) => (
 			};
 
 			return (
-				<Transition in={inProp} timeout={duration}>
+				<Transition key={idx} in={inProp} timeout={duration}>
 					{(state) => (
 						<div
 							style={{

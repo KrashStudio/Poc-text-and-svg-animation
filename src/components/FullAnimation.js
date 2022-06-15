@@ -46,7 +46,7 @@ const FullAnimation = ({ in: inProp, text = "", smooth = true }) => (
 				exited: exitTransition,
 			};
 			return (
-				<Transition in={inProp} timeout={duration}>
+				<Transition key={idx} in={inProp} timeout={duration}>
 					{(state) => (
 						<div
 							style={{

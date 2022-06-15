@@ -6,6 +6,7 @@ import FullAnimation from "./components/FullAnimation";
 import PaperWithButton from "./components/PaperWithButton";
 import Rotate from "./components/Rotate";
 import Zoom from "./components/Zoom";
+import AnimationLottie from "./components/AnimationLottie";
 
 const App = () => {
 	const [fadeIsIn, setFadeIsIn] = React.useState(false);
@@ -22,6 +23,8 @@ const App = () => {
 
 	const [textCustom, setTextCustom] = React.useState(undefined);
 
+	const [lottieTest, setLottieTest] = React.useState();
+
 	const setAllTransition = (value) => {
 		setFadeIsIn(value);
 		setFadeByLetterIsIn(value);
@@ -35,6 +38,26 @@ const App = () => {
 		setFullAnimationIsIn(value);
 	};
 
+	const test = async () => {
+		const res = await fetch(
+			"https://api.iconscout.com/v3/search?query=test&product_type=item&asset=illustration&price=free&per_page=10&page=1&sort=relevant",
+			{
+				method: "GET",
+				headers: {
+					"Client-ID": "164089817001091",
+					accept: "application/json",
+				},
+			}
+		);
+		const resJson = await res.json();
+		console.log("resJson", resJson);
+		setLottieTest(resJson.response.items.data);
+	};
+
+	React.useEffect(() => {
+		test();
+	}, []);
+
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -46,6 +69,7 @@ const App = () => {
 						RESET ALL
 					</button>
 				</div>
+				<AnimationLottie />
 				<div className="App-line">
 					<PaperWithButton onClick={() => setFadeIsIn((e) => !e)}>
 						<Fade in={fadeIsIn} />
@@ -100,6 +124,11 @@ const App = () => {
 						/>
 					</PaperWithButton>
 				</div>
+				{lottieTest?.map((el, idx) => {
+					return (
+						<img alt={`${idx}`} src={el.urls.png_256 ?? el.urls.thumb}></img>
+					);
+				})}
 			</header>
 		</div>
 	);
